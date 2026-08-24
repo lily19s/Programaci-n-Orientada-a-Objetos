@@ -27,6 +27,10 @@ public class OrderDetail {
         return quantity;
     }
 
+    public double getPrice(){
+        return price;
+    }
+
     public double calculateTotal() {
 
         return quantity * price;

@@ -20,7 +20,8 @@ public class App {
         Order objOrder = new Order(5, objCustomer, objProduct, 3);
         Order objOrder2 = new Order(8, objCustomer2, objProduct2, 9);
 
-        objCustomer.showOrder(objOrder);
-        objCustomer.showOrder(objOrder2);
+        objCustomer.showOrder(objOrder, objRestaurant);
+        objCustomer.showOrder(objOrder2, objRestaurant);
+        
     }
 }
