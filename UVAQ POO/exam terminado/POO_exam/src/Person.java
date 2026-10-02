@@ -4,9 +4,9 @@ public class Person {
     private String email;
     private String phone;
 
-    private final int Id = 1000;
-    private static final int FINAL_ID = 1000;
-    private static int idNumber;
+    private static int Id = 1000;
+    private static final int FINAL_ID = 1001;
+    private final int idNumber;
 
     //constructor
     public Person(String email, String name, String phone) {
@@ -38,9 +38,8 @@ public class Person {
 
     //methods and functions
 
-    public void totalPeple (){
-
-        return FINAL_ID - Id;
+    public static int getTotalPeople (){
+        return Id - FINAL_ID;
     }
 
 }

@@ -10,7 +10,15 @@ public class DetailConsult {
     public DetailConsult(String reasonConsult, String diagnostic, int cost) {
         this.reasonConsult = reasonConsult;
         this.diagnostic = diagnostic;
-        this.cost = cost;
+
+        if (cost <= 0) {
+            System.out.println("The cost must be greather than 0");
+            this.cost = 100;
+        } else {
+
+            this.cost = cost;
+        }
+
     }
 
     //getters
@@ -26,16 +34,20 @@ public class DetailConsult {
         return cost;
     }
 
-    public static void addTaxes(int cost, double TAXES){
-        
-        return cost * TAXES;
+    public double getAddTaxes(int cost, double TAXES) {
+
+        return cost + (cost * TAXES);
+    }
+
+    public double getAddTaxes() {
+        return getAddTaxes(cost, TAXES);
     }
 
     //Methodas and functions
-    public void showInformation(){
-        System.out.println(" - reason consult: " + reasonConsult + "-");
+    public void showInformation() {
+        System.out.println(" - reason consult: " + reasonConsult + "- " + cost);
         System.out.println("Diagnostic: " + diagnostic);
-        System.out.println("Price: $" + cost);
+        System.out.println("Price final: $" + getAddTaxes());
     }
 
 }

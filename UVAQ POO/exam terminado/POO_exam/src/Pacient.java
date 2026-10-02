@@ -4,7 +4,7 @@ public class Pacient extends Person {
     private int dateOfBird;
     private String bloodType;
 
-    public Pacient( String name, String email,String phone, int dateOfBird, String bloodType) {
+    public Pacient(String name, String email, String phone, int dateOfBird, String bloodType) {
 
         super(email, name, phone);
 
@@ -28,7 +28,5 @@ public class Pacient extends Person {
     public String getBloodType() {
         return bloodType;
     }
-
-    
 
 }

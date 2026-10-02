@@ -1,36 +1,36 @@
 
 public class Consultory {
 
-    private int fload;
+    private int floor;
     private String especiality;
-    private final int number = 1;
-    private static int consultoryNumber;
+    private static int number = 0;
+    private final int consultoryNumber;
 
-    public Consultory(int fload, String especiality) {
+    public Consultory(int floor, String especiality, int consultoryNumber) {
 
         if (consultoryNumber <= 0) {
 
             System.out.println("The number cannot be equal or less than 0");
-            return;
+            this.consultoryNumber = 1;
 
         } else {
             number++;
             this.consultoryNumber = number;
         }
-        this.fload = fload;
+        this.floor = floor;
         this.especiality = especiality;
     }
 
     //getters
     public int getFload() {
-        return fload;
+        return floor;
     }
 
     public String getEspeciality() {
         return especiality;
     }
 
-    public static int getConsultoryNumber() {
+    public int getConsultoryNumber() {
         return consultoryNumber;
     }
 

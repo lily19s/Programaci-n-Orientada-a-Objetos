@@ -4,7 +4,7 @@ import java.util.*;
 public class Clinic {
 
     private static final String CLINIC_NAME = "HealthCare Center";
-    private ArryList<Consultory> consultory;
+    private ArrayList<Consultory> consultory;
     private ArrayList<Doctor> medic;
 
     //constructor
@@ -26,8 +26,20 @@ public class Clinic {
         return medic;
     }
 
+    public void addConsultory(Consultory consultory) {
+        this.consultory.add(consultory);
+    }
+
+    public void addDoctor(Doctor doctor) {
+        this.medic.add(doctor);
+    }
+    
+    //methods and functions
+
     public void showInformation(){
         System.out.println("Clinic name: " + CLINIC_NAME);
+        System.out.println("-------------------------------");
+        
     }
 
 }

@@ -45,9 +45,9 @@ public class Product {
         }
     }
 
-    public void removeStock(int stock) {
-        if (stock > 0 && stock <= this.stock) {
-            this.stock = this.stock - stock;
+    public void removeStock(int lessStock) {
+        if (lessStock > 0 && lessStock <= this.stock) {
+            this.stock = this.stock - lessStock;
         }
     }
 
