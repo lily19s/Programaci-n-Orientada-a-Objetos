@@ -78,7 +78,8 @@ public class Arena {
     public void listCharacters() {
 
         for (Character character : characters) {
-            System.out.println(character);
+            character.showInformation();
+            System.out.println("-----------------------");
         }
     }
 

@@ -57,6 +57,7 @@ public class Character {
         System.out.println("Name: " + getName());
         System.out.println("Health: " + getHealth());
         System.out.println("Level: " + getLevel());
+        System.out.println("-----------------------");
     }
 
 }
