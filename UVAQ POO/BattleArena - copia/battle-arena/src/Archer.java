@@ -37,23 +37,6 @@ public class Archer extends Character {
         return damage;
     }
 
-    @Override 
-    public int attack(int explosiveTNT) {
-        int damage = (getArrows()*10 + explosiveTNT * 3);
-        return damage;
-
-    }
-
-    @Override 
-    public int attack(boolean fire) {
-
-        if (fire) {
-
-            return getDexterity() * 5;
-        }
-        return getHealth() - 10;
-    }
-
     @Override
     public void showInformation() {
         super.showInformation();

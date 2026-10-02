@@ -5,7 +5,6 @@ public class Arena {
 
     private ArrayList<Character> characters = new ArrayList<Character>();
     private String name;
-    Random rnd = new Random();
 
     //constructor
     public Arena(String name) {
@@ -38,27 +37,11 @@ public class Arena {
             System.out.println("ROUND: " + countRounds);
             System.out.println();
 
-            int opt = rnd.nextInt(3);
-            int damage1 = 0;
+            int damage1 = character1.attack();
 
-            switch (opt) {
-                case 1:
-                    damage1 = character1.attack();
-                    break;
-
-                case 2:
-                    damage1 = character1.attack(50);
-                    break;
-
-                case 3:
-                    damage1 = character1.attack(true);
-                default:
-                    break;
-
-            }
             character2.receiveDamage(damage1);
 
-            System.out.println(character1.getName() + " attackts " + character1.getAttack());
+            System.out.println(character1.getName() + " attackts with is sword " + character1.getAttack());
             System.out.println("Damage: " + damage1);
             System.out.println(character2.getName() + " received " + damage1 + " damage");
             System.out.println("Health " + character2.getHealth());
@@ -66,27 +49,10 @@ public class Arena {
 
             if (character2.isAlive()) {
 
-                int opt2 = rnd.nextInt(3);
-                int damage2 = 0;
-
-                switch (opt2) {
-                    case 1:
-                        damage2 = character2.attack();
-                        break;
-
-                    case 2:
-                        damage2 = character2.attack(60);
-
-                    case 3:
-                        damage2 = character2.attack(true);
-
-                    default:
-                        break;
-                }
-
+                int damage2 = character2.attack();
                 character1.receiveDamage(damage2);
 
-                System.out.println(character2.getName() + " attackts " + character2.getAttack());
+                System.out.println(character2.getName() + " attackts with is sword " + character2.getAttack());
                 System.out.println("Damage: " + damage2);
                 System.out.println(character1.getName() + " received " + damage2 + " damage");
                 System.out.println("Health: " + character1.getHealth());

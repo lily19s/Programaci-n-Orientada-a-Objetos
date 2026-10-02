@@ -3,14 +3,14 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        Warrior Aquiles = new Warrior("Aquiles", 10000, 8, 7, "Excalibur");
-        Warrior Teseo = new Warrior("Teseo", 8000, 9, 6, "Tizona");
+        Warrior Aquiles = new Warrior("Aquiles", 100, 8, 7, "Excalibur");
+        Warrior Teseo = new Warrior("Teseo", 80, 9, 6, "Tizona");
 
-        Mage Circe = new Mage("Circe", 9000, 6, 8, 60);
-        Mage Erichtho = new Mage("Erichtho", 9500, 8, 10, 80);
+        Mage Circe = new Mage("Circe", 90, 6, 8, 60);
+        Mage Erichtho = new Mage("Erichtho", 95, 8, 10, 80);
 
-        Archer Heracles = new Archer("Heracles", 9000, 9, 6, 10);
-        Archer Odiseo = new Archer("Odiseo", 8000, 7, 9, 10);
+        Archer Heracles = new Archer("Heracles", 90, 9, 6, 10);
+        Archer Odiseo = new Archer("Odiseo", 80, 7, 9, 10);
 
         Arena BattleArena = new Arena("Palestra de Olimpia");
         BattleArena.addCharacter(Aquiles);

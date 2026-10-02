@@ -35,23 +35,6 @@ public class Mage extends Character {
         return damage;
     }
 
-    @Override 
-     public int attack(int stars) {
-        int damage = (getMana()+30 *stars+30);
-        return damage;
-
-    }
-
-    @Override 
-    public int attack(boolean telekinesis) {
-
-        if (telekinesis) {
-
-            return getMagicPower()* 20/3;
-        }
-        return getHealth() - 10;
-    }
-
     @Override
     public void showInformation() {
         super.showInformation();

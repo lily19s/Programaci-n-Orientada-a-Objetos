@@ -6,7 +6,7 @@ public class Warrior extends Character {
 
     //constructor
     public Warrior(String name, int health, int level, int strength, String armor) {
-
+        
         super(name, health, level);
 
         this.strength = strength;
@@ -22,31 +22,12 @@ public class Warrior extends Character {
         return armor;
     }
 
-    //attacks
     @Override
     public int attack() {
         int damage = getStrength() + (getLevel() * 2);
         return damage;
     }
 
-    @Override 
-    public int attack(int explosiveTNT) {
-        int damage = (getStrength() * 5 + explosiveTNT);
-        return damage;
-
-    }
-
-    @Override 
-    public int attack(boolean thorns) {
-
-        if (thorns) {
-
-            return getStrength() + 50;
-        }
-        return getHealth() - 10;
-    }
-
-    //
     @Override
     public void showInformation() {
         super.showInformation();
@@ -55,9 +36,9 @@ public class Warrior extends Character {
         System.out.println("Armor: " + getArmor());
     }
 
-    @Override
-
-    public String getAttack() {
+     @Override 
+     
+     public String getAttack() {
         return "attacks with his sword.";
     }
 

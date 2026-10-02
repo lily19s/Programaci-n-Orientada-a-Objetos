@@ -30,14 +30,6 @@ public class Character {
         return 10;
     }
 
-    public int attack(int extra1) {
-        return 50;
-    }
-
-    public int attack(boolean extra2) {
-        return 100;
-    }
-
     public String getAttack() {
         return "attacks";
     }
