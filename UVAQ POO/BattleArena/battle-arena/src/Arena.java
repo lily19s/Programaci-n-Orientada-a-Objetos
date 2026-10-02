@@ -56,7 +56,6 @@ public class Arena {
                 System.out.println("Damage: " + damage2);
                 System.out.println(character1.getName() + " received " + damage2 + " damage");
                 System.out.println("Health: " + character1.getHealth());
-                System.out.println("Health: " + character2.getHealth());
                 System.out.println();
             }
 
