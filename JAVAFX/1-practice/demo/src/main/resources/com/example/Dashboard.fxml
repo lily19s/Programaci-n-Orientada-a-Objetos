@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="dashboard-scroll" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.dashboardController">
+   <content>
+      <GridPane maxHeight="Infinity" maxWidth="Infinity" styleClass="dashboard" stylesheets="@styles/dashboard.css">
+        <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33" />
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33" />
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="33.33" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints vgrow="ALWAYS" />
+      </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="column" stylesheets="@styles/dashboard.css">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="column-title" text="Pendientes" />
+                        <Region prefHeight="30.0" prefWidth="19.0" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="totalTodo" text="3">
+                           <styleClass>
+                              <String fx:value="todo" />
+                              <String fx:value="total" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="column-header" />
+                        <String fx:value="todo" />
+                     </styleClass>
+                  </HBox>
+                  <VBox fx:id="containerTodo" prefHeight="200.0" prefWidth="218.0" styleClass="cardsContainer" VBox.vgrow="ALWAYS" />
+                  
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="column" GridPane.columnIndex="1">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="166.0" text="En progreso">
+                           <styleClass>
+                              <String fx:value="in-progress" />
+                              <String fx:value="column-title" />
+                           </styleClass>
+                        </Label>
+                        <Region prefHeight="30.0" prefWidth="2.0" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="totalInProgress" text="3">
+                           <styleClass>
+                              <String fx:value="total" />
+                              <String fx:value="in-progress" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="column-header" />
+                        <String fx:value="in-progress" />
+                     </styleClass>
+                  </HBox>
+                  <VBox fx:id="containerInProgress" prefHeight="200.0" prefWidth="100.0" styleClass="cardsContainer" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox styleClass="column" stylesheets="@styles/dashboard.css" GridPane.columnIndex="2">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="column-title" text="Completadas" />
+                        <Region prefHeight="30.0" prefWidth="9.0" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="totalCompleted" text="3">
+                           <styleClass>
+                              <String fx:value="total" />
+                              <String fx:value="completed" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="column-header" />
+                        <String fx:value="completed" />
+                     </styleClass>
+                  </HBox>
+                  <VBox fx:id="containerCompleted" prefHeight="410.0" prefWidth="218.0" styleClass="cardsContainer" VBox.vgrow="ALWAYS">
+            </VBox>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </content>
+</ScrollPane>

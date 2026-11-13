@@ -1,0 +1,103 @@
+.root {
+  -fx-background-color: #f1f4f8;
+  -fx-font-family: "Segoe UI", "Inter", sans-serif;
+  -fx-font-size: 13px;
+  -fx-padding: 28px;
+  -fx-spacing: 20px;
+}
+
+.main-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #0f172a;
+}
+
+.task-card {
+  -fx-background-color: white;
+  -fx-background-radius: 14px;
+  -fx-border-radius: 14px;
+  -fx-border-color: #e3e8ee;
+  -fx-padding: 26px;
+  -fx-spacing: 10px;
+  
+}
+
+.task-card .label {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #475569;
+}
+
+.text-field, .text-area, .combo-box, .date-picker {
+  -fx-background-color: white;
+  -fx-background-radius: 8px;
+  -fx-border-color: #cbd5e1;
+  -fx-border-radius: 8px;
+  -fx-font-size: 13px;
+}
+
+.text-field, .combo-box, .date-picker {
+  -fx-pref-height: 38px;
+}
+
+.text-area .content {
+  -fx-background-color: white;
+  -fx-background-radius: 8px;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused {
+  -fx-border-color: #2563eb;
+  
+}
+
+.tips-card {
+  -fx-background-color: #e8eef6;
+  -fx-background-radius: 14px;
+  -fx-border-radius: 14px;
+  -fx-border-color: #d0d8e0;
+  -fx-padding: 18px;
+  -fx-spacing: 10px;
+}
+
+.tips-card .tips-title {
+  -fx-font-size: 15px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1e293b;
+}
+
+.tips-card .tips-text {
+  -fx-font-size: 12px;
+  -fx-text-fill: #475569;
+}
+
+.btn-bar {
+  -fx-padding: 16px 0 0 0;
+  -fx-spacing: 10px;
+  -fx-alignment: CENTER_LEFT;
+}
+
+.btn-bar .button {
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
+  -fx-padding: 9px 20px;
+  -fx-cursor: hand;
+}
+
+.btn-cancel {
+  -fx-background-color: #ffffff;
+  -fx-text-fill: #334155;
+  -fx-border-color: #cbd5e1;
+}
+
+.btn-save {
+  -fx-background-color: #2563eb;
+  -fx-text-fill: #ffffff;
+}
+
+.btn-delete {
+  -fx-background-color: #fee2e2;
+  -fx-text-fill: #b91c1c;
+  -fx-border-color: #fecaca;
+}

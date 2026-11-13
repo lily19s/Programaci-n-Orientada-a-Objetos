@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox onMouseClicked="#editTask" styleClass="card" stylesheets="@styles/dashboardCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.dashboardCardContollers">
+   <children>
+      <VBox styleClass="card-content">
+         <children>
+            <Label fx:id="title" styleClass="card-title" text="Título" />
+            <Label fx:id="description" styleClass="card-description" text="Descripción" wrapText="true" />
+         </children>
+      </VBox>
+      <HBox styleClass="card-footer">
+         <children>
+            <Label fx:id="date" styleClass="date" text="15/04/2025" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="priority" minWidth="-Infinity" styleClass="priority" text="Alta" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convierte temperaturas entre Celsius y Fahrenheit.">
+  <title>Convertidor de temperatura</title>
+  <style>
+    :root { font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; color: #17211d; background: #f5f7f4; font-synthesis: none; text-rendering: optimizeLegibility; }
+    * { box-sizing: border-box; }
+    body { display: flex; min-width: 320px; min-height: 100vh; flex-direction: column; margin: 0; }
+    header { padding: 1.25rem max(1.5rem, calc((100% - 760px) / 2)); background: #fff; border-bottom: 1px solid #e7ece8; }
+    .brand { color: #176b4d; font-weight: 800; text-decoration: none; }
+    main { display: grid; flex: 1; place-items: center; padding: 3rem 1rem; }
+    .converter { width: min(100%, 560px); padding: clamp(1.5rem, 5vw, 2.5rem); background: #fff; border: 1px solid #e8ede9; border-radius: 18px; box-shadow: 0 14px 40px rgb(27 54 40 / 8%); }
+    .eyebrow { margin: 0 0 0.5rem; color: #438269; font-size: 0.8rem; font-weight: 750; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.4rem); letter-spacing: -0.05em; text-align: center; }
+    .intro { margin: 0.75rem 0 1.75rem; color: #68766f; line-height: 1.6; text-align: center; }
+    .fields { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; }
+    .field { display: grid; gap: 0.5rem; }
+    label { font-size: 0.9rem; font-weight: 700; }
+    .input-wrap { position: relative; }
+    input { width: 100%; padding: 0.85rem 2.8rem 0.85rem 0.9rem; color: #17211d; font: inherit; font-size: 1.15rem; background: #fbfcfb; border: 1px solid #d9e1dc; border-radius: 9px; }
+    input:focus { border-color: #438269; outline: 3px solid rgb(67 130 105 / 15%); }
+    .unit { position: absolute; top: 50%; right: 0.9rem; color: #68766f; font-weight: 700; transform: translateY(-50%); }
+    .switch-button { display: grid; width: 2.8rem; height: 2.8rem; margin-bottom: 0.15rem; color: #176b4d; font-size: 1.25rem; place-items: center; background: #edf5f0; border: 0; border-radius: 50%; cursor: pointer; transition: transform 180ms ease, background 180ms ease; }
+    .switch-button:hover { background: #deeee4; transform: rotate(180deg); }
+    .result { min-height: 1.5rem; margin: 1.5rem 0 0; color: #176b4d; font-size: 1.05rem; font-weight: 750; text-align: center; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #f2b544; outline-offset: 3px; }
+    footer { padding: 1.25rem; color: #68766f; font-size: 0.9rem; text-align: center; background: #fff; border-top: 1px solid #e7ece8; }
+    @media (max-width: 520px) { header { padding: 1rem 1.25rem; } .fields { grid-template-columns: 1fr; } .switch-button { justify-self: center; transform: rotate(90deg); } .switch-button:hover { transform: rotate(270deg); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="index.html">verde.</a></header>
+  <main>
+    <section class="converter" aria-labelledby="title">
+      <p class="eyebrow">Conversión rápida</p>
+      <h1 id="title">Temperatura</h1>
+      <p class="intro">Escribe un valor y la conversión aparecerá al instante.</p>
+      <div class="fields">
+        <div class="field">
+          <label id="source-label" for="source-temperature">Celsius</label>
+          <div class="input-wrap">
+            <input id="source-temperature" type="number" step="any" inputmode="decimal" placeholder="0" aria-describedby="result">
+            <span class="unit" id="source-unit" aria-hidden="true">°C</span>
+          </div>
+        </div>
+        <button class="switch-button" id="switch-direction" type="button" aria-label="Cambiar dirección de conversión" title="Cambiar dirección">⇄</button>
+        <div class="field">
+          <label id="target-label" for="target-temperature">Fahrenheit</label>
+          <div class="input-wrap">
+            <input id="target-temperature" type="number" step="any" inputmode="decimal" placeholder="0" aria-describedby="result" readonly>
+            <span class="unit" id="target-unit" aria-hidden="true">°F</span>
+          </div>
+        </div>
+      </div>
+      <p class="result" id="result" aria-live="polite">Ingresa una temperatura para comenzar.</p>
+    </section>
+  </main>
+  <footer><p>&copy; <span id="year"></span> Verde Tienda.</p></footer>
+  <script>
+    const sourceInput = document.querySelector("#source-temperature");
+    const targetInput = document.querySelector("#target-temperature");
+    const sourceLabel = document.querySelector("#source-label");
+    const targetLabel = document.querySelector("#target-label");
+    const sourceUnit = document.querySelector("#source-unit");
+    const targetUnit = document.querySelector("#target-unit");
+    const result = document.querySelector("#result");
+    let direction = "CtoF";
+
+    function convertTemperature() {
+      if (sourceInput.value.trim() === "") {
+        targetInput.value = "";
+        result.textContent = "Ingresa una temperatura para comenzar.";
+        return;
+      }
+      const value = Number(sourceInput.value);
+      if (!Number.isFinite(value)) {
+        targetInput.value = "";
+        result.textContent = "Escribe un valor numérico válido.";
+        return;
+      }
+      const converted = direction === "CtoF" ? value * 9 / 5 + 32 : (value - 32) * 5 / 9;
+      const rounded = Number(converted.toFixed(2));
+      targetInput.value = String(rounded);
+      result.textContent = `${value} ${sourceUnit.textContent} equivalen a ${rounded} ${targetUnit.textContent}.`;
+    }
+
+    function switchDirection() {
+      direction = direction === "CtoF" ? "FtoC" : "CtoF";
+      const celsiusToFahrenheit = direction === "CtoF";
+      sourceLabel.textContent = celsiusToFahrenheit ? "Celsius" : "Fahrenheit";
+      targetLabel.textContent = celsiusToFahrenheit ? "Fahrenheit" : "Celsius";
+      sourceUnit.textContent = celsiusToFahrenheit ? "°C" : "°F";
+      targetUnit.textContent = celsiusToFahrenheit ? "°F" : "°C";
+      sourceInput.value = targetInput.value;
+      convertTemperature();
+      sourceInput.focus();
+    }
+
+    sourceInput.addEventListener("input", convertTemperature);
+    document.querySelector("#switch-direction").addEventListener("click", switchDirection);
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

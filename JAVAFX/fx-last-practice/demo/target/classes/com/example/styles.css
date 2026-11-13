@@ -1,0 +1,9 @@
+.button {
+    -fx-background-color:red;  
+}
+.label {
+    -fx-text-fill: blue;
+}
+.btn-primary {
+    -fx-background-color: pink;
+}

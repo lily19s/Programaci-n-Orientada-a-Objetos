@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organiza tus tareas en una lista sencilla.">
+  <title>Mis tareas</title>
+  <style>
+    :root {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #17211d;
+      background: #f5f7f4;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      padding: 1.25rem max(1.5rem, calc((100% - 760px) / 2));
+      background: #fff;
+      border-bottom: 1px solid #e7ece8;
+    }
+
+    .brand {
+      color: #176b4d;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(760px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 4rem 0;
+    }
+
+    .intro {
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+
+    .intro p {
+      margin: 0 0 0.5rem;
+      color: #438269;
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      margin: 0.75rem 0 0;
+      color: #68766f;
+      line-height: 1.5;
+    }
+
+    .task-panel {
+      padding: clamp(1rem, 4vw, 1.5rem);
+      background: #fff;
+      border: 1px solid #e8ede9;
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgb(27 54 40 / 7%);
+    }
+
+    .task-form {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .task-form input {
+      min-width: 0;
+      flex: 1;
+      padding: 0.85rem 1rem;
+      color: #17211d;
+      font: inherit;
+      background: #fbfcfb;
+      border: 1px solid #d9e1dc;
+      border-radius: 9px;
+    }
+
+    .task-form input:focus {
+      border-color: #438269;
+      outline: 3px solid rgb(67 130 105 / 15%);
+    }
+
+    button {
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary-button {
+      padding: 0.85rem 1rem;
+      color: #fff;
+      background: #176b4d;
+      border: 0;
+      border-radius: 9px;
+      transition: background 160ms ease;
+    }
+
+    .primary-button:hover {
+      background: #10563d;
+    }
+
+    button:focus-visible,
+    .brand:focus-visible {
+      outline: 3px solid #f2b544;
+      outline-offset: 3px;
+    }
+
+    .list-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 1.75rem 0 0.75rem;
+    }
+
+    .list-heading h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .task-count {
+      color: #68766f;
+      font-size: 0.9rem;
+    }
+
+    .task-list {
+      display: grid;
+      gap: 0.65rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem;
+      border: 1px solid #e8ede9;
+      border-radius: 11px;
+    }
+
+    .task-text {
+      min-width: 0;
+      flex: 1;
+      overflow-wrap: anywhere;
+      line-height: 1.45;
+    }
+
+    .task-item.completed .task-text {
+      color: #87928c;
+      text-decoration: line-through;
+    }
+
+    .task-check {
+      width: 1.15rem;
+      height: 1.15rem;
+      flex: 0 0 auto;
+      accent-color: #176b4d;
+      cursor: pointer;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .icon-button {
+      padding: 0.45rem 0.6rem;
+      color: #176b4d;
+      background: #edf5f0;
+      border: 0;
+      border-radius: 7px;
+    }
+
+    .icon-button:hover {
+      background: #deeee4;
+    }
+
+    .delete-button {
+      color: #9b3434;
+      background: #fff0f0;
+    }
+
+    .delete-button:hover {
+      background: #ffe2e2;
+    }
+
+    .empty-message {
+      padding: 1.5rem 0;
+      color: #68766f;
+      text-align: center;
+    }
+
+    .export-button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .edit-form {
+      display: flex;
+      width: 100%;
+      gap: 0.5rem;
+    }
+
+    .edit-form input {
+      min-width: 0;
+      flex: 1;
+      padding: 0.6rem 0.7rem;
+      font: inherit;
+      border: 1px solid #438269;
+      border-radius: 7px;
+    }
+
+    .edit-form input:focus {
+      outline: 3px solid rgb(67 130 105 / 15%);
+    }
+
+    .edit-form button {
+      padding: 0.55rem 0.7rem;
+    }
+
+    footer {
+      padding: 1.25rem;
+      color: #68766f;
+      font-size: 0.9rem;
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid #e7ece8;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding: 1rem;
+      }
+
+      main {
+        padding: 2.5rem 0;
+      }
+
+      .task-form {
+        flex-direction: column;
+      }
+
+      .task-item {
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+
+      .task-actions {
+        margin-left: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">verde.</a>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p>Un paso a la vez</p>
+      <h1 id="page-title">Mis tareas</h1>
+      <p class="subtitle">Anota lo que tienes pendiente y organiza tu día.</p>
+    </section>
+
+    <section class="task-panel" aria-label="Administrador de tareas">
+      <form class="task-form" id="task-form">
+        <label for="task-input" hidden>Nueva tarea</label>
+        <input id="task-input" name="task" type="text" maxlength="200" placeholder="¿Qué necesitas hacer?" required>
+        <button class="primary-button" id="submit-button" type="submit">Agregar tarea</button>
+      </form>
+
+      <div class="list-heading">
+        <h2>Tu lista</h2>
+        <span class="task-count" id="task-count" aria-live="polite"></span>
+      </div>
+      <ul class="task-list" id="task-list" aria-label="Tareas guardadas"></ul>
+      <p class="empty-message" id="empty-message">Todavía no hay tareas. ¡Agrega la primera!</p>
+      <p class="task-count" id="pending-count" aria-live="polite"></p>
+      <button class="primary-button export-button" id="export-button" type="button" hidden>
+        Descargar archivo Word: to do list
+      </button>
+      <p id="export-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Verde Tienda.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+  <script>
+    const storageKey = "verde-todo-items";
+    const form = document.querySelector("#task-form");
+    const taskInput = document.querySelector("#task-input");
+    const submitButton = document.querySelector("#submit-button");
+    const taskList = document.querySelector("#task-list");
+    const taskCount = document.querySelector("#task-count");
+    const pendingCount = document.querySelector("#pending-count");
+    const emptyMessage = document.querySelector("#empty-message");
+    const exportButton = document.querySelector("#export-button");
+    const exportStatus = document.querySelector("#export-status");
+    let tasks = loadTasks();
+    let editingId = null;
+
+    function loadTasks() {
+      try {
+        const savedTasks = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        if (!Array.isArray(savedTasks)) {
+          throw new Error("El formato de las tareas guardadas no es válido.");
+        }
+        return savedTasks.filter((task) =>
+          task &&
+          typeof task.id === "string" &&
+          typeof task.text === "string" &&
+          typeof task.completed === "boolean"
+        );
+      } catch (error) {
+        console.error("No se pudieron cargar las tareas guardadas.", error);
+        window.alert("No se pudieron leer las tareas guardadas en este navegador.");
+        return [];
+      }
+    }
+
+    function saveTasks() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(tasks));
+        return true;
+      } catch (error) {
+        console.error("No se pudieron guardar las tareas.", error);
+        window.alert("No se pudo guardar la lista. Revisa el espacio disponible o la configuración de almacenamiento del navegador.");
+        return false;
+      }
+    }
+
+    function createButton(label, className, onClick) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = className;
+      button.textContent = label;
+      button.setAttribute("aria-label", label);
+      button.addEventListener("click", onClick);
+      return button;
+    }
+
+    function renderTasks() {
+      taskList.replaceChildren();
+      emptyMessage.hidden = tasks.length > 0;
+      exportButton.hidden = tasks.length === 0;
+      taskCount.textContent = `${tasks.length} ${tasks.length === 1 ? "tarea" : "tareas"}`;
+      const pending = tasks.filter((task) => !task.completed).length;
+      pendingCount.textContent = `${pending} ${pending === 1 ? "tarea pendiente" : "tareas pendientes"}`;
+
+      tasks.forEach((task) => {
+        const item = document.createElement("li");
+        item.className = `task-item${task.completed ? " completed" : ""}`;
+
+        if (editingId === task.id) {
+          renderEditForm(item, task);
+        } else {
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.className = "task-check";
+          checkbox.checked = task.completed;
+          checkbox.setAttribute("aria-label", `Marcar "${task.text}" como completada`);
+          checkbox.addEventListener("change", () => toggleTask(task.id));
+
+          const text = document.createElement("span");
+          text.className = "task-text";
+          text.textContent = task.text;
+
+          const actions = document.createElement("div");
+          actions.className = "task-actions";
+          actions.append(
+            createButton("Editar", "icon-button", () => startEditing(task.id)),
+            createButton("Eliminar", "icon-button delete-button", () => deleteTask(task.id))
+          );
+          item.append(checkbox, text, actions);
+        }
+
+        taskList.append(item);
+      });
+    }
+
+    async function exportWordDocument() {
+      if (tasks.length === 0) {
+        exportStatus.textContent = "Agrega al menos una tarea antes de crear el documento.";
+        return;
+      }
+
+      if (!window.docx) {
+        exportStatus.textContent = "No se pudo cargar el generador de Word. Revisa tu conexión a internet e inténtalo de nuevo.";
+        return;
+      }
+
+      exportButton.disabled = true;
+      exportStatus.textContent = "Preparando el documento...";
+
+      try {
+        const { Document, HeadingLevel, Packer, Paragraph, TextRun } = window.docx;
+        const paragraphs = [
+          new Paragraph({
+            text: "to do list",
+            heading: HeadingLevel.TITLE
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: `Generado: ${new Date().toLocaleString("es-MX")}`,
+                italics: true
+              })
+            ]
+          }),
+          ...tasks.map((task) => new Paragraph({
+            children: [
+              new TextRun({
+                text: `${task.completed ? "[x]" : "[ ]"}  ${task.text}`
+              })
+            ],
+            spacing: { after: 180 }
+          }))
+        ];
+        const wordDocument = new Document({
+          title: "to do list",
+          sections: [{ children: paragraphs }]
+        });
+        const blob = await Packer.toBlob(wordDocument);
+        const downloadUrl = URL.createObjectURL(blob);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = downloadUrl;
+        downloadLink.download = "to do list.docx";
+        downloadLink.click();
+        window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+        exportStatus.textContent = "Se descargó to do list.docx con todas tus tareas.";
+      } catch (error) {
+        console.error("No se pudo generar el documento Word.", error);
+        exportStatus.textContent = "No se pudo crear el documento. Inténtalo de nuevo.";
+      } finally {
+        exportButton.disabled = false;
+      }
+    }
+
+    function renderEditForm(item, task) {
+      const editForm = document.createElement("form");
+      editForm.className = "edit-form";
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = task.text;
+      input.maxLength = 200;
+      input.required = true;
+      input.setAttribute("aria-label", "Editar texto de la tarea");
+
+      const saveButton = document.createElement("button");
+      saveButton.type = "submit";
+      saveButton.className = "primary-button";
+      saveButton.textContent = "Guardar";
+
+      const cancelButton = document.createElement("button");
+      cancelButton.type = "button";
+      cancelButton.className = "icon-button";
+      cancelButton.textContent = "Cancelar";
+      cancelButton.addEventListener("click", () => {
+        editingId = null;
+        renderTasks();
+      });
+
+      editForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const newText = input.value.trim();
+        if (!newText) {
+          input.focus();
+          return;
+        }
+        const previousText = task.text;
+        task.text = newText;
+        if (!saveTasks()) {
+          task.text = previousText;
+          return;
+        }
+        editingId = null;
+        renderTasks();
+      });
+
+      editForm.append(input, saveButton, cancelButton);
+      item.append(editForm);
+      input.focus();
+      input.select();
+    }
+
+    function startEditing(taskId) {
+      editingId = taskId;
+      renderTasks();
+    }
+
+    function toggleTask(taskId) {
+      const task = tasks.find((entry) => entry.id === taskId);
+      if (!task) return;
+      task.completed = !task.completed;
+      if (!saveTasks()) {
+        task.completed = !task.completed;
+      }
+      renderTasks();
+    }
+
+    function deleteTask(taskId) {
+      const deletedTask = tasks.find((entry) => entry.id === taskId);
+      tasks = tasks.filter((task) => task.id !== taskId);
+      if (!saveTasks()) {
+        tasks.push(deletedTask);
+      } else if (editingId === taskId) {
+        editingId = null;
+      }
+      renderTasks();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = taskInput.value.trim();
+      if (!text) {
+        taskInput.focus();
+        return;
+      }
+
+      const task = {
+        id: globalThis.crypto && typeof globalThis.crypto.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        text,
+        completed: false
+      };
+      tasks.push(task);
+      if (!saveTasks()) {
+        tasks.pop();
+        return;
+      }
+      taskInput.value = "";
+      taskInput.focus();
+      renderTasks();
+    });
+
+    exportButton.addEventListener("click", exportWordDocument);
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    renderTasks();
+  </script>
+</body>
+</html>

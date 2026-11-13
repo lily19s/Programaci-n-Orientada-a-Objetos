@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="950.0" stylesheets="@styles/task.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.newTaskController">
+   <children>
+     
+      <VBox AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" styleClass="main-content">
+         <children>
+            <Label fx:id="formTitle" styleClass="main-title" text="Registrar nueva tarea">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS" styleClass="task-card">
+                     <children>
+                        <Label text="Título de la tarea" />
+                        <TextField fx:id="titleField" />
+                        <Label text="Descripción" />
+                        <TextArea fx:id="descriptionField" prefHeight="100.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <HBox>
+                           <children>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Prioridad" />
+                                    <ComboBox fx:id="priorityBox" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox prefWidth="190.0">
+                                 <children>
+                                    <Label text="Fecha límite" />
+                                    <DatePicker fx:id="datePicker" prefHeight="27.0" prefWidth="190.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox styleClass="btn-bar">
+               <children>
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" styleClass="btn-cancel" text="Cancelar" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" prefHeight="38.0" prefWidth="129.0" styleClass="btn-delete" text="Eliminar tarea" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#save" styleClass="btn-save" text="Guardar tarea" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      
+
+      <VBox AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0" prefWidth="160.0">
+         <children>
+            <Label styleClass="tips-title" text="Consejos rápidos" />
+            <Label />
+            <Label styleClass="tips-text" text="- Sé específico en el título." wrapText="true" />
+            <Label styleClass="tips-text" text="- Define una fecha límite clara." wrapText="true" />
+            <Label styleClass="tips-text" text="- Las tareas que agregues se clasificarán en automático en estado pendiente." wrapText="true" />
+         </children>
+         <styleClass>
+            <String fx:value="tips-card" />
+            <String fx:value="tips-title" />
+         </styleClass>
+      </VBox>
+   </children>
+</AnchorPane>

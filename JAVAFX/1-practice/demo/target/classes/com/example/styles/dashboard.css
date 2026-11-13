@@ -1,0 +1,61 @@
+.dashboard {
+    -fx-padding: 20px;
+    -fx-hgap: 20px;
+    -fx-background-color: rgb(245, 246, 250);
+}
+
+.column {
+    -fx-spacing: 12px;
+}
+
+.column-header {
+    -fx-pref-height: 50px;
+    -fx-alignment: center;
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 10px;
+}
+
+.column-header.todo {
+    -fx-background-color: #fed9d9;
+}
+
+.column-header.in-progress {
+    -fx-background-color: #f8f0d5;
+}
+
+.column-header.completed {
+    -fx-background-color: #cff9d5;
+}
+
+.column-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.total {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-pref-width: 26px;
+    -fx-pref-height: 26px;
+    -fx-background-radius: 50px;
+}
+
+.total.todo {
+    -fx-background-color: #e43a3a;
+}
+
+.total.in-progress {
+    -fx-background-color: #f5a623;
+}
+
+.total.completed {
+    -fx-background-color: #2eae5a;
+}
+
+.cardsContainer {
+    -fx-spacing: 12px;
+}

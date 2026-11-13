@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ponte en contacto con nosotros.">
+  <title>Contacto | Verde Tienda</title>
+  <style>
+    :root {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #17211d;
+      background: #f5f7f4;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      min-width: 320px;
+      min-height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    header {
+      padding: 1.25rem max(1.5rem, calc((100% - 1120px) / 2));
+      background: #fff;
+      border-bottom: 1px solid #e7ece8;
+    }
+
+    .brand {
+      color: #176b4d;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    main {
+      display: grid;
+      flex: 1;
+      place-items: center;
+      padding: 3rem 1rem;
+    }
+
+    .contact-card {
+      width: min(100%, 540px);
+      padding: clamp(1.5rem, 5vw, 2.5rem);
+      background: #fff;
+      border: 1px solid #e8ede9;
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgb(27 54 40 / 8%);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: #438269;
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      letter-spacing: -0.05em;
+    }
+
+    .intro {
+      margin: 0.75rem 0 1.75rem;
+      color: #68766f;
+      line-height: 1.6;
+    }
+
+    .privacy-note {
+      margin: 1rem 0 0;
+      color: #68766f;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .records-status {
+      margin: 1rem 0 0;
+      color: #68766f;
+      font-size: 0.9rem;
+    }
+
+    .export-button {
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+
+    form {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      color: #17211d;
+      font: inherit;
+      background: #fbfcfb;
+      border: 1px solid #d9e1dc;
+      border-radius: 9px;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #438269;
+      outline: none;
+      box-shadow: 0 0 0 3px rgb(67 130 105 / 15%);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 0.85rem 1rem;
+      color: #fff;
+      font: inherit;
+      font-weight: 750;
+      background: #176b4d;
+      border: 0;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: background 160ms ease;
+    }
+
+    button:hover {
+      background: #10563d;
+    }
+
+    button:focus-visible,
+    .brand:focus-visible {
+      outline: 3px solid #f2b544;
+      outline-offset: 3px;
+    }
+
+    footer {
+      padding: 1.25rem;
+      color: #68766f;
+      font-size: 0.9rem;
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid #e7ece8;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding: 1rem 1.25rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html" aria-label="Volver a Verde Tienda">verde.</a>
+  </header>
+
+  <main>
+    <section class="contact-card" aria-labelledby="contact-title">
+      <p class="eyebrow">Estamos para ayudarte</p>
+      <h1 id="contact-title">Contacto</h1>
+      <p class="intro">Completa el formulario y nos pondremos en contacto contigo.</p>
+
+      <form id="contact-form">
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit">Enviar mensaje</button>
+      </form>
+      <p class="records-status" id="records-status" aria-live="polite"></p>
+      <button class="export-button" id="export-button" type="button" hidden>Descargar Excel con todos los registros</button>
+      <p class="privacy-note">Los registros se acumulan en este navegador. El archivo de Excel se crea cuando hay al menos dos registros; no se envían a un servidor.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Verde Tienda. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script>
+    const form = document.querySelector("#contact-form");
+    const exportButton = document.querySelector("#export-button");
+    const recordsStatus = document.querySelector("#records-status");
+    const storageKey = "verde-contact-submissions";
+    let submissions = [];
+
+    try {
+      const savedSubmissions = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      if (Array.isArray(savedSubmissions)) {
+        submissions = savedSubmissions;
+      } else {
+        throw new Error("El formato de los registros guardados no es válido.");
+      }
+    } catch (error) {
+      console.error("No se pudieron recuperar los registros guardados.", error);
+      window.alert("No se pudieron leer los registros guardados en este navegador. Revisa la configuración de almacenamiento antes de enviar.");
+    }
+
+    function updateRecordsStatus() {
+      const count = submissions.length;
+      recordsStatus.textContent = count === 1
+        ? "Hay 1 registro guardado en este navegador. Se necesitan 2 para crear el Excel."
+        : `Hay ${count} registros guardados en este navegador.`;
+      exportButton.hidden = count < 2;
+    }
+
+    function downloadWorkbook() {
+      if (submissions.length < 2) {
+        window.alert("Agrega al menos dos registros antes de crear el archivo de Excel.");
+        return false;
+      }
+      if (typeof XLSX === "undefined") {
+        window.alert("No se pudo crear el archivo de Excel. Verifica tu conexión a internet e inténtalo de nuevo.");
+        return false;
+      }
+
+      try {
+        const worksheet = XLSX.utils.json_to_sheet(submissions, {
+          header: ["Fecha", "Nombre", "Email", "Mensaje"]
+        });
+        worksheet["!cols"] = [
+          { wch: 22 },
+          { wch: 24 },
+          { wch: 32 },
+          { wch: 60 }
+        ];
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Contactos");
+        XLSX.writeFile(workbook, "base de datos.xlsx");
+        return true;
+      } catch (error) {
+        console.error("No se pudo generar el archivo de Excel.", error);
+        window.alert("Los registros están guardados en este navegador, pero no se pudo generar el archivo de Excel.");
+        return false;
+      }
+    }
+
+    exportButton.addEventListener("click", downloadWorkbook);
+    updateRecordsStatus();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = document.querySelector("#name").value.trim();
+      const email = document.querySelector("#email").value.trim();
+      const message = document.querySelector("#message").value.trim();
+
+      if (!name || !email || !message) {
+        window.alert("Error: completa todos los campos antes de enviar.");
+        return;
+      }
+
+      const record = {
+        Fecha: new Date().toLocaleString("es-MX"),
+        Nombre: name,
+        Email: email,
+        Mensaje: message
+      };
+      const updatedSubmissions = [...submissions, record];
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(updatedSubmissions));
+      } catch (error) {
+        console.error("No se pudieron guardar los registros en este navegador.", error);
+        window.alert("No se pudo guardar el registro en este navegador. Revisa el espacio disponible o la configuración de almacenamiento.");
+        return;
+      }
+
+      submissions = updatedSubmissions;
+      updateRecordsStatus();
+      form.reset();
+
+      if (submissions.length === 2) {
+        if (downloadWorkbook()) {
+          window.alert("Se creó \"base de datos.xlsx\" con los dos registros.");
+        }
+      } else {
+        window.alert("Registro agregado. Se guardó junto con los demás registros en este navegador.");
+      }
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
