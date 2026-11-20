@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox styleClass="member-card" stylesheets="@styles/memberCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.memberCardController">
+   <children>
+      <HBox styleClass="member-top">
+         <children>
+            <Label fx:id="initials" styleClass="member-avatar" text="AR" />
+            <VBox minWidth="0.0" styleClass="member-info" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="name" styleClass="member-name" text="Nombre completo" />
+                  <Label fx:id="email" styleClass="member-email" text="correo@ejemplo.com" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox styleClass="member-middle">
+         <children>
+            <Label fx:id="role" styleClass="member-role" text="Rol" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="taskCount" styleClass="member-tasks" text="0 tareas" />
+         </children>
+      </HBox>
+      <Region styleClass="member-divider" />
+      <HBox styleClass="member-actions">
+         <children>
+            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#editMember" styleClass="btn-member-edit" text="Editar" HBox.hgrow="ALWAYS" />
+            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#deleteMember" styleClass="btn-member-delete" text="Eliminar" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

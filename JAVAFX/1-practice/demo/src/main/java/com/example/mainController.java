@@ -2,8 +2,10 @@ package com.example;
 
 import java.io.IOException;
 
+import com.example._controllers.newMemberController;
 import com.example._controllers.newTaskController;
 import com.example._models.DashboardTask;
+import com.example._models.TeamMember;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +41,7 @@ public class mainController {
     }
 
     @FXML
-    void showTeam() {
+    public void showTeam() {
         laodView("/com/example/Team.fxml");
     }
 
@@ -53,7 +55,6 @@ public class mainController {
         laodView("/com/example/newTask.fxml");
     }
 
-    
     public void showEditTask(DashboardTask task) {
 
         try {
@@ -64,6 +65,28 @@ public class mainController {
 
             newTaskController controller = loader.getController();
             controller.setTask(task);
+
+            mainContainer.getChildren().setAll(view);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showNewMember() {
+        laodView("/com/example/userTeam.fxml");
+    }
+
+    public void showEditMember(TeamMember member) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/userTeam.fxml"));
+
+            Parent view = loader.load();
+
+            newMemberController controller = loader.getController();
+            controller.setMember(member);
 
             mainContainer.getChildren().setAll(view);
 

@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/dashboard.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="team-scroll" stylesheets="@styles/team.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.teamController">
+   <content>
+      <VBox styleClass="team-view">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="pending">
+            <HBox styleClass="team-header">
                <children>
-                  <Label text="Equipo" />
+                  <Label styleClass="team-title" text="Miembros del equipo" />
+                  <Label fx:id="totalMembers" styleClass="team-count" text="0" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="searchField" promptText="Buscar por correo..." styleClass="team-search" />
+                  <Button mnemonicParsing="false" onAction="#showNewMember" styleClass="btn-new-member" text="+ Nuevo miembro" />
                </children>
             </HBox>
+            <Label fx:id="emptyLabel" styleClass="empty-label" text="Aún no hay miembros registrados. Agrega el primero con el botón &quot;+ Nuevo miembro&quot;." wrapText="true" />
+            <FlowPane fx:id="membersContainer" styleClass="members-container" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" />
-      <VBox prefHeight="200.0" prefWidth="100.0" />
-   </children>
-</HBox>
+   </content>
+</ScrollPane>

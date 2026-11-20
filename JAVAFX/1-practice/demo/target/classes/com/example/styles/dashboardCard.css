@@ -1,99 +1,164 @@
 .card {
-    -fx-background-color: white;
-    -fx-background-radius: 12px;
-    -fx-padding: 14px;
-    -fx-spacing: 10px;
-    -fx-effect: dropshadow(gaussian, #0000001a, 8, 0, 0, 2);
+  -fx-background-color: white;
+  -fx-background-radius: 12px;
+  -fx-padding: 14px;
+  -fx-spacing: 10px;
+  -fx-effect: dropshadow(gaussian, #0000001a, 8, 0, 0, 2);
 }
 
 .card-header {
-    -fx-alignment: center-left;
+  -fx-alignment: center-left;
 }
 
 .card .tag {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-padding: 3px 10px;
-    -fx-background-radius: 6px;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-padding: 3px 10px;
+  -fx-background-radius: 6px;
 }
 
 .card .tag.purple {
-    -fx-background-color: #ede0fc;
-    -fx-text-fill: #673ab7;
+  -fx-background-color: #ede0fc;
+  -fx-text-fill: #673ab7;
 }
 
 .card .menu-dots {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #787878;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #787878;
 }
 
 .card-content {
-    -fx-spacing: 4px;
+  -fx-spacing: 4px;
 }
 
 .card-title {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #1e1e2d;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1e1e2d;
 }
 
 .card-description {
-    -fx-font-size: 13px;
-    -fx-text-fill: #6e6e7d;
-    -fx-wrap-text: true;
+  -fx-font-size: 13px;
+  -fx-text-fill: #6e6e7d;
+  -fx-wrap-text: true;
 }
 
 .card-footer {
-    -fx-alignment: center-left;
-    -fx-spacing: 8px;
-    -fx-padding: 6px 0 0 0;
+  -fx-alignment: center-left;
+  -fx-spacing: 8px;
+  -fx-padding: 6px 0 0 0;
 }
 
 .card .date {
-    -fx-font-size: 13px;
-    -fx-text-fill: #6e6e7d;
+  -fx-font-size: 13px;
+  -fx-text-fill: #6e6e7d;
 }
 
 .card .avatar {
-    -fx-min-width: 32px;
-    -fx-min-height: 32px;
-    -fx-pref-width: 32px;
-    -fx-pref-height: 32px;
-    -fx-background-radius: 50px;
-    -fx-alignment: center;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+  -fx-min-width: 32px;
+  -fx-min-height: 32px;
+  -fx-pref-width: 32px;
+  -fx-pref-height: 32px;
+  -fx-background-radius: 50px;
+  -fx-alignment: center;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
 }
 
 .card .avatar.purple {
-    -fx-background-color: #e1d2fa;
-    -fx-text-fill: #4c2b8c;
+  -fx-background-color: #e1d2fa;
+  -fx-text-fill: #4c2b8c;
 }
 
 .card .priority {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-padding: 4px 10px;
-    -fx-background-radius: 6px;
-    -fx-text-fill: rgb(175, 164, 164);
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-padding: 4px 10px;
+  -fx-background-radius: 6px;
+  -fx-text-fill: rgb(175, 164, 164);
 }
 
 .card .priority.high {
-    -fx-background-color: #fed9d9;
-    -fx-text-fill: #be4646;
+  -fx-background-color: #fed9d9;
+  -fx-text-fill: #be4646;
 }
 
 .card .priority.medium {
-    -fx-background-color: #ded2a0;
-    -fx-text-fill: #d5993e;
+  -fx-background-color: #ded2a0;
+  -fx-text-fill: #d5993e;
 }
 
 .card .priority.low {
-    -fx-background-color: #ace6ac;
-    -fx-text-fill: #2f552a;
+  -fx-background-color: #ace6ac;
+  -fx-text-fill: #2f552a;
 }
 
 .card:hover {
-    -fx-cursor: hand;
+  -fx-cursor: hand;
+}
+
+.card-status {
+  -fx-alignment: center-left;
+  -fx-spacing: 8px;
+}
+
+.card .status-label {
+  -fx-font-size: 12px;
+  -fx-text-fill: #6e6e7d;
+}
+
+.card .status-box {
+  -fx-font-size: 11px;
+  -fx-pref-width: 110px;
+  -fx-max-width: 110px;
+  -fx-pref-height: 22px;
+  -fx-min-height: 22px;
+  -fx-max-height: 22px;
+  -fx-background-radius: 6px;
+  -fx-cursor: hand;
+}
+
+.card .status-box .list-cell {
+  -fx-padding: 0 0 0 8px;
+}
+
+.card .status-box .arrow-button {
+  -fx-padding: 0 6px 0 6px;
+}
+
+.card .status-box .arrow {
+  -fx-padding: 3px;
+}
+
+.card-assignee {
+  -fx-alignment: center-left;
+  -fx-spacing: 8px;
+}
+
+.card .assignee-avatar {
+  -fx-min-width: 24px;
+  -fx-min-height: 24px;
+  -fx-pref-width: 24px;
+  -fx-pref-height: 24px;
+  -fx-alignment: center;
+  -fx-background-color: #dbeafe;
+  -fx-background-radius: 50px;
+  -fx-text-fill: #1d4ed8;
+  -fx-font-size: 10px;
+  -fx-font-weight: bold;
+}
+
+.card .assignee-name {
+  -fx-font-size: 12px;
+  -fx-text-fill: #1e1e2d;
+}
+
+.card .assignee-avatar.unassigned {
+  -fx-background-color: #eef0f4;
+  -fx-text-fill: #94a3b8;
+}
+
+.card .assignee-name.unassigned {
+  -fx-text-fill: #94a3b8;
 }

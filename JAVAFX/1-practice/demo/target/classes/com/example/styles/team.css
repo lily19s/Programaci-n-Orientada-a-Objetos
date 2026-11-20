@@ -1,0 +1,76 @@
+.team-scroll {
+  -fx-background-color: transparent;
+  -fx-background: #f5f6fa;
+  -fx-padding: 0;
+}
+
+.team-scroll .viewport {
+  -fx-background-color: #f5f6fa;
+}
+
+.team-view {
+  -fx-padding: 20px;
+  -fx-spacing: 20px;
+}
+
+.team-header {
+  -fx-alignment: center-left;
+  -fx-spacing: 12px;
+}
+
+.team-title {
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #122543;
+}
+
+.team-count {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-alignment: center;
+  -fx-min-width: 26px;
+  -fx-min-height: 26px;
+  -fx-pref-width: 26px;
+  -fx-pref-height: 26px;
+  -fx-background-color: #1b79f2;
+  -fx-background-radius: 50px;
+}
+
+team-search {
+  -fx-pref-width: 240px;
+  -fx-pref-height: 38px;
+  -fx-background-color: white;
+  -fx-background-radius: 10px;
+  -fx-border-color: #e2e8f0;
+  -fx-border-radius: 10px;
+  -fx-padding: 0 12px 0 12px;
+  -fx-font-size: 13px;
+}
+
+.team-search:focused {
+  -fx-border-color: #1b79f2;
+}
+
+.btn-new-member {
+  -fx-background-color: #1b79f2;
+  -fx-background-radius: 10px;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 10px 18px;
+  -fx-cursor: hand;
+}
+
+.btn-new-member:hover {
+  -fx-background-color: #1566cc;
+}
+
+.empty-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #94a3b8;
+}
+
+.members-container {
+  -fx-hgap: 20px;
+  -fx-vgap: 20px;
+}

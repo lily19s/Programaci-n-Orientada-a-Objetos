@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="950.0" stylesheets="@styles/task.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.newMemberController">
+   <children>
+
+      <VBox styleClass="main-content" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label fx:id="formTitle" styleClass="main-title" text="Registrar nuevo miembro">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" />
+               </VBox.margin>
+            </Label>
+            <VBox styleClass="task-card">
+               <children>
+                  <HBox spacing="20.0">
+                     <children>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Nombre completo" />
+                              <TextField fx:id="nameField" promptText="Ej. Ana López" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Correo electrónico" />
+                              <TextField fx:id="emailField" promptText="correo@ejemplo.com" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Rol" />
+                        <ComboBox fx:id="roleBox" prefWidth="300.0" promptText="Selecciona un rol" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox styleClass="btn-bar">
+               <children>
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" styleClass="btn-cancel" text="Cancelar" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" styleClass="btn-delete" text="Eliminar miembro" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#save" styleClass="btn-save" text="Guardar miembro" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+
+      <VBox prefWidth="160.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label styleClass="tips-title" text="Consejos rápidos" />
+            <Label />
+            <Label styleClass="tips-text" text="- Usa el nombre con el que se le conoce en el equipo." wrapText="true" />
+            <Label styleClass="tips-text" text="- El correo debe ser único: no se pueden repetir." wrapText="true" />
+            <Label styleClass="tips-text" text="- Si cambias el nombre, se actualiza en sus tareas." wrapText="true" />
+         </children>
+         <styleClass>
+            <String fx:value="tips-card" />
+            <String fx:value="tips-title" />
+         </styleClass>
+      </VBox>
+   </children>
+</AnchorPane>

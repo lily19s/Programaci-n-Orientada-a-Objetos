@@ -9,8 +9,8 @@ import com.example._core.Data;
 import com.example._enums.Priority;
 import com.example._enums.Status;
 import com.example._models.DashboardTask;
+import com.example._models.TeamMember;
 import com.example.mainController;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -36,7 +36,15 @@ public class newTaskController {
     @FXML
     private Button deleteButton;
 
+   @FXML
+    private ComboBox<Status> statusBox;
+
+    @FXML
+    private ComboBox<String> assigneeBox;
+  
+
     private DashboardTask editTask;
+
 
     @FXML
     private void initialize() {
@@ -44,8 +52,19 @@ public class newTaskController {
         priorityBox.setValue("Media");
         datePicker.setValue(LocalDate.now());
 
+        statusBox.getItems().addAll(Status.values());
+        statusBox.setValue(Status.TODO);
+
+        
+        assigneeBox.getItems().add("Sin asignar");
+        for (TeamMember member : Data.members) {
+            assigneeBox.getItems().add(member.toString());
+        }
+        assigneeBox.getSelectionModel().select(0);
+
         deleteButton.setVisible(false);
         deleteButton.setManaged(false);
+       
     }
 
     public void setTask(DashboardTask task) {
@@ -70,8 +89,15 @@ public class newTaskController {
         LocalDate localDate = task.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         datePicker.setValue(localDate);
 
+        statusBox.setValue(task.getStatus());
+
+       
+        assigneeBox.getSelectionModel().select(Data.members.indexOf(task.getAssignee()) + 1);
+
         deleteButton.setVisible(true);
         deleteButton.setManaged(true);
+
+       
     }
 
     @FXML
@@ -98,9 +124,15 @@ public class newTaskController {
 
         Date date = Date.from(datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
+        Status status = statusBox.getValue();
+
+        int position = assigneeBox.getSelectionModel().getSelectedIndex();
+        TeamMember assignee = (position <= 0) ? null : Data.members.get(position - 1);
+
         if (editTask == null) {
-            
-            DashboardTask newTask = new DashboardTask(title, description, date, 0, 0, priority, Status.TODO);
+
+            DashboardTask newTask = new DashboardTask(title, description, date, 0, 0, priority, status);
+            newTask.setAssignee(assignee);
             Data.tasks.add(newTask);
         } 
         else {
@@ -108,6 +140,8 @@ public class newTaskController {
             editTask.setDescription(description);
             editTask.setPriority(priority);
             editTask.setDate(date);
+            editTask.setStatus(status);
+            editTask.setAssignee(assignee);
         }
 
         goBack();

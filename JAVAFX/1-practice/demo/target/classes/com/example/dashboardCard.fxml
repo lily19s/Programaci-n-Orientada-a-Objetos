@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
 
 <VBox onMouseClicked="#editTask" styleClass="card" stylesheets="@styles/dashboardCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.dashboardCardContollers">
    <children>
@@ -18,6 +19,18 @@
             <Label fx:id="date" styleClass="date" text="15/04/2025" />
             <Region HBox.hgrow="ALWAYS" />
             <Label fx:id="priority" minWidth="-Infinity" styleClass="priority" text="Alta" />
+         </children>
+      </HBox>
+      <HBox styleClass="card-assignee">
+         <children>
+            <Label fx:id="assigneeAvatar" styleClass="assignee-avatar" text="AR" />
+            <Label fx:id="assigneeName" styleClass="assignee-name" text="Responsable" />
+         </children>
+      </HBox>
+      <HBox styleClass="card-status">
+         <children>
+            <Label styleClass="status-label" text="Estado:" />
+            <ComboBox fx:id="statusBox" onAction="#changeStatus" styleClass="status-box" />
          </children>
       </HBox>
    </children>

@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="950.0" stylesheets="@styles/task.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example._controllers.newTaskController">
    <children>
-     
+
       <VBox AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" styleClass="main-content">
          <children>
             <Label fx:id="formTitle" styleClass="main-title" text="Registrar nueva tarea">
@@ -48,6 +48,25 @@
                               </VBox>
                            </children>
                         </HBox>
+
+                       
+                        <HBox>
+                           <children>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Estado" />
+                                    <ComboBox fx:id="statusBox" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox prefWidth="190.0">
+                                 <children>
+                                    <Label text="Responsable" />
+                                    <ComboBox fx:id="assigneeBox" prefWidth="190.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
@@ -62,7 +81,7 @@
             </HBox>
          </children>
       </VBox>
-      
+
 
       <VBox AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0" prefWidth="160.0">
          <children>
@@ -70,7 +89,8 @@
             <Label />
             <Label styleClass="tips-text" text="- Sé específico en el título." wrapText="true" />
             <Label styleClass="tips-text" text="- Define una fecha límite clara." wrapText="true" />
-            <Label styleClass="tips-text" text="- Las tareas que agregues se clasificarán en automático en estado pendiente." wrapText="true" />
+            
+            <Label styleClass="tips-text" text="- Por defecto la tarea queda en Pendiente; puedes elegir otro estado." wrapText="true" />
          </children>
          <styleClass>
             <String fx:value="tips-card" />

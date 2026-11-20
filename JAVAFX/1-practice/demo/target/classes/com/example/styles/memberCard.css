@@ -1,0 +1,98 @@
+.member-card {
+  -fx-background-color: white;
+  -fx-background-radius: 12px;
+  -fx-padding: 16px;
+  -fx-spacing: 12px;
+  -fx-pref-width: 300px;
+  -fx-min-width: 300px;
+  -fx-max-width: 300px;
+  -fx-effect: dropshadow(gaussian, #0000001a, 8, 0, 0, 2);
+}
+
+.member-card:hover {
+  -fx-effect: dropshadow(gaussian, #00000030, 12, 0, 0, 3);
+}
+
+.member-top {
+  -fx-alignment: center-left;
+  -fx-spacing: 12px;
+}
+
+.member-avatar {
+  -fx-min-width: 44px;
+  -fx-min-height: 44px;
+  -fx-pref-width: 44px;
+  -fx-pref-height: 44px;
+  -fx-alignment: center;
+  -fx-background-color: #dbeafe;
+  -fx-background-radius: 50px;
+  -fx-text-fill: #1d4ed8;
+  -fx-font-size: 15px;
+  -fx-font-weight: bold;
+}
+
+.member-info {
+  -fx-spacing: 2px;
+}
+
+.member-name {
+  -fx-font-size: 15px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1e1e2d;
+}
+
+.member-email {
+  -fx-font-size: 13px;
+  -fx-text-fill: #6e6e7d;
+}
+
+.member-middle {
+  -fx-alignment: center-left;
+}
+
+.member-role {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-padding: 4px 10px;
+  -fx-background-color: #ede0fc;
+  -fx-background-radius: 6px;
+  -fx-text-fill: #673ab7;
+}
+
+.member-tasks {
+  -fx-font-size: 12px;
+  -fx-text-fill: #6e6e7d;
+}
+
+.member-divider {
+  -fx-background-color: #eef0f4;
+  -fx-pref-height: 1px;
+  -fx-min-height: 1px;
+  -fx-max-height: 1px;
+}
+
+.member-actions {
+  -fx-alignment: center;
+  -fx-spacing: 8px;
+}
+
+.member-actions .button {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
+  -fx-padding: 6px 14px;
+  -fx-cursor: hand;
+}
+
+.btn-member-edit {
+  -fx-background-color: #eff6ff;
+  -fx-text-fill: #1d4ed8;
+  -fx-border-color: #bfdbfe;
+}
+
+.btn-member-delete {
+  -fx-background-color: #fee2e2;
+  -fx-text-fill: #b91c1c;
+  -fx-border-color: #fecaca;
+}

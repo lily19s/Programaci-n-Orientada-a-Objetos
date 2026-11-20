@@ -14,6 +14,7 @@ public class DashboardTask {
     private int categoryID;
     private Priority priority;
     private Status status;
+    private TeamMember assignee;
 
     //constructor
     public DashboardTask(String title, String description, Date date, int userID, int categoryID, Priority priority, Status status) {
@@ -29,7 +30,7 @@ public class DashboardTask {
     public DashboardTask(String title, String description, Date date, Priority priority) {
         this(title, description, date, 0, 0, priority, Status.TODO);
     }
-    
+
     //getters and setters
     public String getTitle() {
         return title;
@@ -85,6 +86,14 @@ public class DashboardTask {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public TeamMember getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(TeamMember assignee) {
+        this.assignee = assignee;
     }
 
     @Override
